@@ -138,16 +138,16 @@ public class App {
                 "===================="        );
 
         System.out.println("\n" + "Numero de propietarios: " + ricknillos.numOwners());
-
-        System.out.println("Entradas de Rick: "
-                + ricknillos.balanceOf(rick.getPK())
-                + " "
-                + ricknillos.symbol());
-
-        System.out.println("Entradas de Morty: "
-                + ricknillos.balanceOf(morty.getPK())
-                + " "
-                + ricknillos.symbol());
+//
+//        System.out.println("Entradas de Rick: "
+//                + ricknillos.balanceOf(rick.getPK())
+//                + " "
+//                + ricknillos.symbol());
+//
+//        System.out.println("Entradas de Morty: "
+//                + ricknillos.balanceOf(morty.getPK())
+//                + " "
+//                + ricknillos.symbol());
 
 //        /**
 //         * Morty quiere comprarle 2 entradas a Rick

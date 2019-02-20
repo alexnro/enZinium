@@ -28,10 +28,6 @@ public class TokenContract {
         return this.symbol;
     }
 
-    public int getTotalSupply() {
-        return this.TotalSupply;
-    }
-
     public PublicKey getOwner() {
         return owner;
     }
@@ -56,12 +52,24 @@ public class TokenContract {
     public String toString() {
         String toString = "\nname = " + getName() +
                           "\nsymbol = " + getSymbol() +
-                          "\ntotalSupply = " + getTotalSupply() +
+                          "\ntotalSupply = " + totalSupply() +
                           "\nowner PK = " + getOwner().hashCode();
         return toString;
     }
 
     public void addOwner(PublicKey PK, double units) {
         ownerBalance.put(PK, units);
+    }
+
+    public double totalSupply() {
+        return this.TotalSupply;
+    }
+
+    public int numOwners() {
+        int numOwners = 0;
+        for (PublicKey key : ownerBalance.keySet()) {
+            numOwners++;
+        }
+        return numOwners;
     }
 }
