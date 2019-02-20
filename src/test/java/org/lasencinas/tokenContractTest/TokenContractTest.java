@@ -5,8 +5,7 @@ import org.junit.Test;
 import org.lasencinas.address.Address;
 import org.lasencinas.tokenContract.TokenContract;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class TokenContractTest {
 
@@ -36,6 +35,17 @@ public class TokenContractTest {
         assertEquals("Pepinillos", token.getName());
         assertEquals("PNP", token.symbol());
         assertEquals(350, token.totalSupply(), 0);
+    }
+
+    @Test
+    public void addOwnerTest() {
+        Address pepe = new Address();
+        pepe.generateKeyPair();
+        token.addOwner(address.getPK(), token.totalSupply());
+        token.addOwner(pepe.getPK(), 500d);
+
+        assertEquals(token.getOwner(), address.getPK());
+        assertNotEquals(token.totalSupply(), 500d);
     }
 
 //    @Test
