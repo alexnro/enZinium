@@ -44,7 +44,7 @@ public class TokenContract {
         this.symbol = symbol;
     }
 
-    public void setTotalSupply(int totalSupply) {
+    public void setTotalSupply(double totalSupply) {
         TotalSupply = totalSupply;
     }
 
@@ -58,6 +58,7 @@ public class TokenContract {
     }
 
     public void addOwner(PublicKey PK, double units) {
+        
         if (units <= totalSupply())  {
             ownerBalance.put(PK, units);
         } else {

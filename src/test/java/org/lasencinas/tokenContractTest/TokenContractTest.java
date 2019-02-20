@@ -1,5 +1,6 @@
 package org.lasencinas.tokenContractTest;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.lasencinas.address.Address;
 import org.lasencinas.tokenContract.TokenContract;
@@ -9,14 +10,32 @@ import static org.junit.Assert.assertNotNull;
 
 public class TokenContractTest {
 
+    Address address = null;
+    TokenContract token = null;
+
+    @Before
+    public void init() {
+        address = new Address();
+        address.generateKeyPair();
+        token = new TokenContract(address);
+    }
+
     @Test
     public void TokenContractTest() {
-        Address address = new Address();
-        address.generateKeyPair();
-        TokenContract token = new TokenContract(address);
 
         assertNotNull(token.getOwner());
         assertEquals(token.getOwner(), address.getPK());
+    }
+
+    @Test
+    public void gettersTest() {
+        token.setName("Pepinillos");
+        token.setSymbol("PNP");
+        token.setTotalSupply(350);
+
+        assertEquals("Pepinillos", token.getName());
+        assertEquals("PNP", token.symbol());
+        assertEquals(350, token.totalSupply(), 0);
     }
 
 //    @Test
