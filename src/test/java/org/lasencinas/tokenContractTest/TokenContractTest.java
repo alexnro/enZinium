@@ -38,7 +38,7 @@ public class TokenContractTest {
     }
 
     @Test
-    public void addOwnerTest() {
+    public void ownerTest() {
         Address pepe = new Address();
         pepe.generateKeyPair();
         token.addOwner(address.getPK(), token.totalSupply());
@@ -46,6 +46,7 @@ public class TokenContractTest {
 
         assertEquals(token.getOwner(), address.getPK());
         assertNotEquals(token.totalSupply(), 500d);
+        assertEquals(token.numOwners(), 1);
     }
 
 //    @Test
