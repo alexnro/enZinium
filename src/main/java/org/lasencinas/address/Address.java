@@ -28,17 +28,17 @@ public class Address {
         return symbol;
     }
 
+    public void generateKeyPair() {
+        setPK(GenSig.generateKeyPair().getPublic());
+        setSK(GenSig.generateKeyPair().getPrivate());
+    }
+
     public void setPK(PublicKey PK) {
         this.PK = PK;
     }
 
     public void setSK(PrivateKey SK) {
         this.SK = SK;
-    }
-
-    public void generateKeyPair() {
-        setPK(GenSig.generateKeyPair().getPublic());
-        setSK(GenSig.generateKeyPair().getPrivate());
     }
 
     @Override

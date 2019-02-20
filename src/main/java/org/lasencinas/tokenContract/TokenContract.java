@@ -99,6 +99,20 @@ public class TokenContract {
         }
     }
 
+    public void transfer(PublicKey sender, PublicKey recipient, double units) {
+        /*Exception in thread "main" java.util.ConcurrentModificationException
+        for (Map.Entry<PublicKey, Double> ownerSupply : balances.entrySet()) {
+            if (ownerSupply.getKey() == sender) {
+                ownerSupply.setValue(ownerSupply.getValue() - units);
+            }
+            if (ownerSupply.getKey() == recipient) {
+                ownerSupply.setValue(ownerSupply.getValue() + units);
+            } else {
+                balances.put(recipient, units);
+            }
+        }*/
+    }
+
     public void require(Boolean holds) throws Exception{
         //TODO
     }
