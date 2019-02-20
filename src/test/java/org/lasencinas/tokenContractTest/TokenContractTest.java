@@ -1,13 +1,24 @@
-//package org.lasencinas.tokenContractTest;
-//
-//import org.junit.Test;
-//import org.lasencinas.address.Address;
-//import org.lasencinas.tokenContract.TokenContract;
-//
-//import static org.junit.Assert.assertEquals;
-//
-//public class TokenContractTest {
-//
+package org.lasencinas.tokenContractTest;
+
+import org.junit.Test;
+import org.lasencinas.address.Address;
+import org.lasencinas.tokenContract.TokenContract;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+public class TokenContractTest {
+
+    @Test
+    public void TokenContractTest() {
+        Address address = new Address();
+        address.generateKeyPair();
+        TokenContract token = new TokenContract(address);
+
+        assertNotNull(token.getOwner());
+        assertEquals(token.getOwner(), address.getPK());
+    }
+
 //    @Test
 //    public void payable_test() {
 //
@@ -27,4 +38,4 @@
 //        // verifico la trasnferencia de EZI
 //        assertEquals(20d, ricknillos.owner().getBalance(), 0d);
 //    }
-//}
+}

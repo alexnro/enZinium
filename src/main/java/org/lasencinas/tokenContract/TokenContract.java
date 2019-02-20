@@ -11,7 +11,7 @@ public class TokenContract {
 
     private String name = null;
     private String symbol = null;
-    private int TotalSupply = 0;
+    private double TotalSupply = 0;
     private PublicKey owner = null;
     private Map<PublicKey, Double> ownerBalance = new HashMap<PublicKey, Double>();
     private double balance = 0;
