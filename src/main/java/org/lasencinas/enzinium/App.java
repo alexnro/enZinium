@@ -97,58 +97,58 @@ public class App {
                 "=========================="        );
         System.out.println(ricknillos.toString());
 
-//        /**
-//         * El contrato TokenContract contiene una tabla de balances
-//         * de token por propietario:
-//         * mapping(propietario => numero de unidades que posee)
-//         * Permite al contrato llevar el seguimiento de quien
-//         * posee las entradas.
-//         * Cada transferencia de entradas entre propietarios es
-//         * una deducción en un balance y una adicion en el otro.
-//         *
-//         * Crea una tabla "balances" que mapee cada propietario
-//         * (su Public Key) al numero de tokens que posee.
-//         * Añade a Rick con sus 100 entradas.
-//         * Asegurate de que si el propietario (su Public Key)
-//         * ya existe en la tabla, sus unidades no se actualicen.
-//         *
-//         * addOwner()
-//         * añade el propietario inicial de todos los tokens de este contrato
-//         * @param PublicKey del propietario
-//         * @param cantidad de tokens que posee
-//         */
-//
-//        ricknillos.addOwner(rick.getPK(), ricknillos.totalSupply());
-//        // verifica que Rick no se actualiza una vez que ya existe en el balance
-//        ricknillos.addOwner(rick.getPK(), 500d);
-//
-//        /**
-//         * Consulta los balances
-//         *
-//         * numOwners()
-//         * @return numero de propietarios registrados en la tabla balances
-//         *
-//         * balanceOf()
-//         * @param PublicKey del propietario
-//         * @return cantidad de tokens que posee
-//         * Dada una direccion, devuelve su balance de tokens. Si no existe
-//         * el propietario, devuelve cero.
-//         */
-//        System.out.println("\n" + "Consulta de balances" + "\n" +
-//                "===================="        );
-//
-//        System.out.println("\n" + "Numero de propietarios: " + ricknillos.numOwners());
-//
-//        System.out.println("Entradas de Rick: "
-//                + ricknillos.balanceOf(rick.getPK())
-//                + " "
-//                + ricknillos.symbol());
-//
-//        System.out.println("Entradas de Morty: "
-//                + ricknillos.balanceOf(morty.getPK())
-//                + " "
-//                + ricknillos.symbol());
-//
+        /**
+         * El contrato TokenContract contiene una tabla de balances
+         * de token por propietario:
+         * mapping(propietario => numero de unidades que posee)
+         * Permite al contrato llevar el seguimiento de quien
+         * posee las entradas.
+         * Cada transferencia de entradas entre propietarios es
+         * una deducción en un balance y una adicion en el otro.
+         *
+         * Crea una tabla "balances" que mapee cada propietario
+         * (su Public Key) al numero de tokens que posee.
+         * Añade a Rick con sus 100 entradas.
+         * Asegurate de que si el propietario (su Public Key)
+         * ya existe en la tabla, sus unidades no se actualicen.
+         *
+         * addOwner()
+         * añade el propietario inicial de todos los tokens de este contrato
+         * @param PublicKey del propietario
+         * @param cantidad de tokens que posee
+         */
+
+        ricknillos.addOwner(rick.getPK(), ricknillos.totalSupply());
+        // verifica que Rick no se actualiza una vez que ya existe en el balance
+        ricknillos.addOwner(rick.getPK(), 500d);
+
+        /**
+         * Consulta los balances
+         *
+         * numOwners()
+         * @return numero de propietarios registrados en la tabla balances
+         *
+         * balanceOf()
+         * @param PublicKey del propietario
+         * @return cantidad de tokens que posee
+         * Dada una direccion, devuelve su balance de tokens. Si no existe
+         * el propietario, devuelve cero.
+         */
+        System.out.println("\n" + "Consulta de balances" + "\n" +
+                "===================="        );
+
+        System.out.println("\n" + "Numero de propietarios: " + ricknillos.numOwners());
+
+        System.out.println("Entradas de Rick: "
+                + ricknillos.balanceOf(rick.getPK())
+                + " "
+                + ricknillos.symbol());
+
+        System.out.println("Entradas de Morty: "
+                + ricknillos.balanceOf(morty.getPK())
+                + " "
+                + ricknillos.symbol());
+
 //        /**
 //         * Morty quiere comprarle 2 entradas a Rick
 //         *

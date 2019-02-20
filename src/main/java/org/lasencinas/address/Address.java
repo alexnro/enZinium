@@ -15,6 +15,10 @@ public class Address {
         return this.PK;
     }
 
+    public PublicKey getSK() {
+        return this.SK;
+    }
+
     public double getBalance() {
         return this.balance;
     }

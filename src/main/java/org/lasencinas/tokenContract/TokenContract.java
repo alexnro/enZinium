@@ -4,6 +4,8 @@ import org.lasencinas.address.Address;
 import org.lasencinas.genSig.GenSig;
 
 import java.security.PublicKey;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TokenContract {
 
@@ -11,6 +13,8 @@ public class TokenContract {
     private String symbol = null;
     private int TotalSupply = 0;
     private PublicKey owner = null;
+    private Map<PublicKey, Double> ownerBalance = new HashMap<PublicKey, Double>();
+    private double balance = 0;
 
     public TokenContract(Address address) {
         this.owner = address.getPK();
@@ -32,6 +36,10 @@ public class TokenContract {
         return owner;
     }
 
+    public double getBalance() {
+        return this.balance;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -51,5 +59,9 @@ public class TokenContract {
                           "\ntotalSupply = " + getTotalSupply() +
                           "\nowner PK = " + getOwner().hashCode();
         return toString;
+    }
+
+    public void addOwner(PublicKey PK, double units) {
+        ownerBalance.put(PK, units);
     }
 }
