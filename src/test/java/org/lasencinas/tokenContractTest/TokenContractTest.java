@@ -46,7 +46,7 @@ public class TokenContractTest {
         token.addOwner(rick.getPK(), token.totalSupply());
         token.addOwner(morty.getPK(), 500d);
 
-        assertEquals(1, token.getOwnerBalance().size());
+        assertEquals(1, token.getBalances().size());
         assertEquals(token.getOwner(), rick.getPK());
         assertNotEquals(token.totalSupply(), 500d);
         assertEquals(token.numOwners(), 1);

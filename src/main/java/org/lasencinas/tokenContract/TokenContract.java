@@ -1,7 +1,6 @@
 package org.lasencinas.tokenContract;
 
 import org.lasencinas.address.Address;
-import org.lasencinas.genSig.GenSig;
 
 import java.security.PublicKey;
 import java.util.HashMap;
@@ -13,8 +12,8 @@ public class TokenContract {
     private String symbol = null;
     private double TotalSupply = 0;
     private PublicKey owner = null;
-    private Map<PublicKey, Double> ownerBalance = new HashMap<>();
-    private double balance = 0;
+    private Map<PublicKey, Double> balances = new HashMap<>();
+    private double balanceOf = 0;
 
     public TokenContract(Address address) {
         this.owner = address.getPK();
@@ -32,12 +31,8 @@ public class TokenContract {
         return owner;
     }
 
-    public double getBalance() {
-        return this.balance;
-    }
-
-    public Map<PublicKey, Double> getOwnerBalance() {
-        return this.ownerBalance;
+    public Map<PublicKey, Double> getBalances() {
+        return this.balances;
     }
 
     public void setName(String name) {
@@ -52,10 +47,6 @@ public class TokenContract {
         TotalSupply = totalSupply;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
     @Override
     public String toString() {
         String toString = "\nname = " + getName() +
@@ -66,8 +57,8 @@ public class TokenContract {
     }
 
     public void addOwner(PublicKey PK, double units) {
-        if (ownerBalance.isEmpty()) {
-            ownerBalance.put(PK, units);
+        if (balances.isEmpty()) {
+            balances.put(PK, units);
         }
     }
 
@@ -77,7 +68,7 @@ public class TokenContract {
 
     public int numOwners() {
         int numOwners = 0;
-        for (PublicKey key : ownerBalance.keySet()) {
+        for (PublicKey key : balances.keySet()) {
             numOwners++;
         }
         return numOwners;
@@ -85,7 +76,7 @@ public class TokenContract {
 
     public double balanceOf(PublicKey owner) {
         double balanceOf = 0;
-        for (Map.Entry<PublicKey, Double> ownerSupply : ownerBalance.entrySet()) {
+        for (Map.Entry<PublicKey, Double> ownerSupply : balances.entrySet()) {
             if (ownerSupply.getKey() == owner) {
                 balanceOf = ownerSupply.getValue();
             }
@@ -94,10 +85,21 @@ public class TokenContract {
     }
 
     public void transfer(PublicKey recipient, double units) {
-
+        if (units <= TotalSupply) {
+            for (Map.Entry<PublicKey, Double> ownerSupply : balances.entrySet()) {
+                if (ownerSupply.getKey() == getOwner()) {
+                    ownerSupply.setValue(ownerSupply.getValue() - units);
+                }
+                if (ownerSupply.getKey() == recipient) {
+                    ownerSupply.setValue(ownerSupply.getValue() + units);
+                } else {
+                    balances.put(recipient, units);
+                }
+            }
+        }
     }
 
     public void require(Boolean holds) throws Exception{
-
+        //TODO
     }
 }
