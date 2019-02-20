@@ -19,6 +19,10 @@ public class Address {
         return this.balance;
     }
 
+    public String getSymbol() {
+        return symbol;
+    }
+
     public void setPK(PublicKey PK) {
         this.PK = PK;
     }
@@ -35,7 +39,7 @@ public class Address {
     @Override
     public String toString() {
         String toString = "\nPK = " + getPK().hashCode() +
-                          "\nBalance = " + getBalance();
+                          "\nBalance = " + getBalance() + " " + getSymbol();
         return toString;
     }
 }
