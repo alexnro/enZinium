@@ -1,21 +1,30 @@
 package org.lasencinas.addressTest;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.lasencinas.address.Address;
 
+import java.security.PublicKey;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class AddressTest {
 
+    Address address = null;
+
+    @Before
+    public void init() {
+        address = new Address();
+    }
+
     @Test
     public void generate_key_pair_test() {
-        Address address = new Address();
         assertNotNull(address);
         address.generateKeyPair();
         assertNotNull(address.getPK());
         assertNotNull(address.getSK());
     }
-
 
 //    @Test
 //    public void transferEZI_test() {

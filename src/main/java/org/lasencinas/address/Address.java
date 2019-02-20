@@ -2,12 +2,13 @@ package org.lasencinas.address;
 
 import org.lasencinas.genSig.GenSig;
 
+import java.security.PrivateKey;
 import java.security.PublicKey;
 
 public class Address {
 
     private PublicKey PK = null;
-    private PublicKey SK = null;
+    private PrivateKey SK = null;
     private double balance = 0;
     private String symbol = "EZI";
 
@@ -15,7 +16,7 @@ public class Address {
         return this.PK;
     }
 
-    public PublicKey getSK() {
+    public PrivateKey getSK() {
         return this.SK;
     }
 
@@ -31,13 +32,13 @@ public class Address {
         this.PK = PK;
     }
 
-    public void setSK(PublicKey SK) {
+    public void setSK(PrivateKey SK) {
         this.SK = SK;
     }
 
     public void generateKeyPair() {
         setPK(GenSig.generateKeyPair().getPublic());
-        setSK(GenSig.generateKeyPair().getPublic());
+        setSK(GenSig.generateKeyPair().getPrivate());
     }
 
     @Override

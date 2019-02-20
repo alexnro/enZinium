@@ -13,7 +13,7 @@ public class TokenContract {
     private String symbol = null;
     private double TotalSupply = 0;
     private PublicKey owner = null;
-    private Map<PublicKey, Double> ownerBalance = new HashMap<PublicKey, Double>();
+    private Map<PublicKey, Double> ownerBalance = new HashMap<>();
     private double balance = 0;
 
     public TokenContract(Address address) {
@@ -36,6 +36,10 @@ public class TokenContract {
         return this.balance;
     }
 
+    public Map<PublicKey, Double> getOwnerBalance() {
+        return this.ownerBalance;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -46,6 +50,10 @@ public class TokenContract {
 
     public void setTotalSupply(double totalSupply) {
         TotalSupply = totalSupply;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     @Override
@@ -83,5 +91,13 @@ public class TokenContract {
             }
         }
         return balanceOf;
+    }
+
+    public void transfer(PublicKey recipient, double units) {
+
+    }
+
+    public void require(Boolean holds) throws Exception{
+
     }
 }

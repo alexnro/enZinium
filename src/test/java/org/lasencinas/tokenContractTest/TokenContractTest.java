@@ -9,21 +9,24 @@ import static org.junit.Assert.*;
 
 public class TokenContractTest {
 
-    Address address = null;
+    Address rick = null;
+    Address morty = null;
     TokenContract token = null;
 
     @Before
     public void init() {
-        address = new Address();
-        address.generateKeyPair();
-        token = new TokenContract(address);
+        rick = new Address();
+        rick.generateKeyPair();
+        morty = new Address();
+        morty.generateKeyPair();
+        token = new TokenContract(rick);
     }
 
     @Test
     public void TokenContractTest() {
 
         assertNotNull(token.getOwner());
-        assertEquals(token.getOwner(), address.getPK());
+        assertEquals(token.getOwner(), rick.getPK());
     }
 
     @Test
@@ -39,14 +42,23 @@ public class TokenContractTest {
 
     @Test
     public void ownerTest() {
-        Address pepe = new Address();
-        pepe.generateKeyPair();
-        token.addOwner(address.getPK(), token.totalSupply());
-        token.addOwner(pepe.getPK(), 500d);
+        morty.generateKeyPair();
+        token.addOwner(rick.getPK(), token.totalSupply());
+        token.addOwner(morty.getPK(), 500d);
 
-        assertEquals(token.getOwner(), address.getPK());
+        assertEquals(1, token.getOwnerBalance().size());
+        assertEquals(token.getOwner(), rick.getPK());
         assertNotEquals(token.totalSupply(), 500d);
         assertEquals(token.numOwners(), 1);
+    }
+
+    @Test
+    public void balanceOfTest() {
+        token.addOwner(rick.getPK(), 100);
+        token.addOwner(morty.getPK(), 200);
+
+        assertEquals(100, token.balanceOf(rick.getPK()), 0);
+        assertEquals(0, token.balanceOf(morty.getPK()), 0);
     }
 
 //    @Test
