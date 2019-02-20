@@ -32,17 +32,17 @@ public class App {
         Address rick = new Address();
         rick.generateKeyPair();
 
-//        /**
-//         * Visualiza la direccion publica de Rick y su balance
-//         *
-//         * Utiliza el metodo hashCode() de PublicKey para
-//         * mostrar la PublicKey en consola
-//         */
-//
-//        System.out.println("\n" + "Address de Rick" + "\n" +
-//                "==============="        );
-//        System.out.println(rick.toString());
-//
+        /**
+         * Visualiza la direccion publica de Rick y su balance
+         *
+         * Utiliza el metodo hashCode() de PublicKey para
+         * mostrar la PublicKey en consola
+         */
+
+        System.out.println("\n" + "Address de Rick" + "\n" +
+                "==============="        );
+        System.out.println(rick.toString());
+
 //        /**
 //         * Creamos una Address en nuestro sistema para Morty
 //         * y otra para Jen y visualizamos su direccion puvlica
