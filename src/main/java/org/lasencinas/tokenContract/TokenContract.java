@@ -24,7 +24,7 @@ public class TokenContract {
         return this.name;
     }
 
-    public String getSymbol() {
+    public String symbol() {
         return this.symbol;
     }
 
@@ -51,14 +51,18 @@ public class TokenContract {
     @Override
     public String toString() {
         String toString = "\nname = " + getName() +
-                          "\nsymbol = " + getSymbol() +
+                          "\nsymbol = " + symbol() +
                           "\ntotalSupply = " + totalSupply() +
                           "\nowner PK = " + getOwner().hashCode();
         return toString;
     }
 
     public void addOwner(PublicKey PK, double units) {
-        ownerBalance.put(PK, units);
+        if (units <= totalSupply())  {
+            ownerBalance.put(PK, units);
+        } else {
+            ownerBalance.put(PK, totalSupply());
+        }
     }
 
     public double totalSupply() {
@@ -71,5 +75,15 @@ public class TokenContract {
             numOwners++;
         }
         return numOwners;
+    }
+
+    public double balanceOf(PublicKey owner) {
+        double balanceOf = 0;
+        for (Map.Entry<PublicKey, Double> ownerSupply : ownerBalance.entrySet()) {
+            if (ownerSupply.getKey() == owner) {
+                balanceOf = ownerSupply.getValue();
+            }
+        }
+        return balanceOf;
     }
 }
